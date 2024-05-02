@@ -98,29 +98,37 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
-let enKucuk = 0;
-let enBuyuk = 9999;
-for (let i = 0; i < sayilar.legth; i++) {
-  if (sayilar[i] >= enBuyuk) enBuyuk = sayilar[i];
-}
-if (sayilar[i] < enKucuk) {
-  enKücük = sayilar[i];
-}
+const büyükKücükSayilar = (sayilar) => {
+  enkucuk = sayilar[0];
+  enbuyuk = sayilar[0];
+  for (let i = 0; i < sayilar.legth; i++) {
+    if (sayilar[i] >= enbuyuk) enbuyuk = sayilar[i];
+  }
+  if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i];
+  }
+};
 
 /* kodlar buraya */
 
 // 3b çözümü:
 ucetambolunenler = [];
 sayilar.forEach((item) => {
-  if (item % 3 === 0) ucetambolunenler.push(item);
+  if (item % 3 === 0) {
+    ucetambolunenler.push(item);
+  }
+  console.log("3b:", ucetambolunenler);
+  return ucetambolunenler;
 });
 
 /* kodlar buraya */
 
 // 3c çözümü:
 ucebolunenlerintoplami = [];
-ucetambolunenler.reduce((total, yeni) => total + yeni, 0);
-console.log(ücebolunenlerintoplamicebolunenlerintoplami);
+ucebolunenlerintoplami = ucetambolunenler.reduce(
+  (total, yeni) => total + yeni,
+  0
+);
 /* kodlar buraya */
 
 // 3d çözümü
@@ -138,7 +146,20 @@ console.log(siralisayilar);
 /* kodlar buraya */
 
 // 3f çözümü
-tekrarEdenSayilarNesnesi = {};
+tekraredensayilar = [];
+const depo = {};
+for (let sayi of sayilar) {
+  if (depo[sayi] === undefined) {
+    depo[sayi] = 1;
+  } else {
+    depo[sayi]++;
+  }
+}
+for (let key in depo) {
+  if (depo[key] > 1) {
+    tekraredensayilar.push(`${key} sayısı ${depo[key]} kere tekrar edilmiştir`);
+  }
+}
 /* kodlar buraya */
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
